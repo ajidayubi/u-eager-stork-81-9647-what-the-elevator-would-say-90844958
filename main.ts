@@ -10,6 +10,9 @@ if (LINE.length < 1 || LINE.length > 120) {
 if (LINE.trim().length === 0) {
   throw new Error("entry must not be only whitespace");
 }
+if (LINE.includes("\n") || LINE.includes("\r")) {
+  throw new Error("entry must be a single line");
+}
 
 const outDir = "/output";
 mkdirSync(outDir, { recursive: true });
